@@ -1,10 +1,7 @@
-
-import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   getAuth,
-  GoogleAuthProvider,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -12,6 +9,8 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { getDatabase, onValue, push, ref, set } from "firebase/database";
+import { useEffect, useState } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5EpUtnC9MiWejISwSvbJQWDJrQBGVSDw",
@@ -23,9 +22,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const firebase = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+export default firebase;
+
+const auth = getAuth(firebase);
 
 export const createUser = async (email, password, displayName, navigate) => {
   try {
@@ -59,16 +60,44 @@ export const logOut = () => {
   alert("User log out");
 };
 
-
-
-export const userObserver =  (setCurrentUser) => {
+export const userObserver = (setCurrentUser) => {
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
-      setCurrentUser(currentUser)
-      
-      
+      setCurrentUser(currentUser);
     } else {
-      setCurrentUser(false)
+      setCurrentUser(false);
     }
   });
-}
+};
+
+export const Additem = (initialValues) => {
+  const database = getDatabase();
+  const itemRef = ref(database, "baglanti2");
+  const newİtem = push(itemRef);
+  set(newİtem, {
+    title: initialValues.title,
+    imgurl: initialValues.imgurl,
+    content: initialValues.content,
+  });
+};
+
+export const useFetch = () => {
+  const [items, setItems] = useState();
+
+  useEffect(() => {
+    const database = getDatabase();
+    const itemRef = ref(database, "baglanti2");
+
+    onValue(itemRef, (snapshot) => {
+      const data = snapshot.val();
+      const myArray = [];
+      for (let id in data) {
+        myArray.push({ id, ...data[id] });
+      }
+
+      setItems(myArray);
+    });
+  }, []);
+
+  return { items };
+};

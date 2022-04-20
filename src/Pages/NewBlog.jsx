@@ -2,20 +2,27 @@ import React from "react";
 import "./NewBlog.css";
 import Blog from "../assets/blok.png";
 import { useState } from "react";
+import { useContext } from 'react';
+import {BlogContext} from "../contexts/BlogContexts"
 
 const NewBlog = () => {
-  const [title, setTitle] = useState("");
-  const [imgurl, setImgurl] = useState("");
-  const [content, setContent] = useState("");
+  
+  const{initialValues} = useContext(BlogContext);
+  const {setInitialValues} = useContext(BlogContext);
+  const {handleFormSubmit} = useContext(BlogContext);
+
+ const handleChange = (e) => {
+   e.preventDefault();
+   const {name, value} = e.target;
+   
+   setInitialValues({...initialValues, [name] : value})
+ }
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(title, imgurl, content)
-  }
+
 
   return (
-    <form className="newblog" onSubmit={handleSubmit}>
+    <form className="newblog" onSubmit={(e) => handleFormSubmit(e)}>
       <img src={Blog} alt="" className="blokim" />
       <div className="blognew">
         <div className="leftnright"></div>
@@ -29,7 +36,8 @@ const NewBlog = () => {
         placeholder="Title*"
         required
         className="newinput"
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={handleChange}
+        value = {initialValues.title}
       />
       <input
         type="text"
@@ -37,16 +45,18 @@ const NewBlog = () => {
         placeholder="Image URL*"
         required
         className="newinput"
-        onChange={(e) => setImgurl(e.target.value)}
+        onChange={handleChange}
+        value = {initialValues.imgurl}
       />
       <textarea
         name="content"
-        id=""
+        id="content"
         cols="52"
         rows="10"
         placeholder="Content*"
         style={{ marginTop: "1rem" }}
-        onChange={(e) => setContent(e.target.value)}
+        onChange={handleChange}
+        value = {initialValues.content}
       />
       <input type="submit" value="SUBMIT" className="newsubmit" />
     </form>
