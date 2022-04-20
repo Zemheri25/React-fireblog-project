@@ -6,6 +6,10 @@ import { logOut } from "../helpers/firebase";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
+import { Dropdown } from "react-bootstrap";
+import { DropdownButton } from "react-bootstrap";
+
+
 const Navbar = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
@@ -18,51 +22,66 @@ const Navbar = () => {
     navigate("/register");
   };
 
+  const handleNewBlog = () => {
+    navigate("/newblog")
+  }
+
+  const handleProfile = () => {
+    navigate("/profile")
+  }
+
+  const handleDashboard = () =>{
+    navigate("/")
+  }
+
   return (
     <div className="navbar">
       <img src={cw} alt="cwlogo" className="cwimage" />
       <div className="headingmiddle">
-        <div className="leftandright"></div>
-        <h1 style={{ color: "white" }}>Zemheri25 BLOG</h1>
+        <div className="leftandright" style={{marginLeft : "5rem"}}></div>
+        <h1 style={{ color: "white", cursor : "pointer"  }} onClick = {handleDashboard}>Zemheri25 BLOG</h1>
         <div className="leftandright"></div>
       </div>
 
       <div className="userrighttop">
         <div style={{ display: "flex" }}>
           {currentUser ? (
-            <h4 style={{ color: "white", marginRight: "1rem" }}>
-              {currentUser.displayName}
-            </h4>
+            <h4 style={{ color: "white"}}>{currentUser.displayName}</h4>
           ) : (
             <button
               type="button"
               className="btn btn-danger "
               onClick={handleLogin}
-              style = {{marginRight : "1rem"}}
+              style={{ marginRight: "1rem" }}
             >
               Login
             </button>
           )}
-          {currentUser ? (
-            <button
-              type="button"
-              className="btn btn-danger "
-              onClick={() => logOut()}
+          {currentUser && (
+            <DropdownButton
+              id="dropdown-basic-button"
+              title="Settings"
+              variant="danger"
+              className="dropdown"
+              style={{marginLeft : "1rem"}}
             >
-              Logout
-            </button>
-          ) : (
+              <Dropdown.Item onClick={handleProfile}>Profile</Dropdown.Item>
+              <Dropdown.Item onClick={handleNewBlog}>New</Dropdown.Item>
+              <Dropdown.Item onClick={() => logOut()}>Log out</Dropdown.Item>
+            </DropdownButton>
+          )}
+
+          {!currentUser && (
             <button
               type="button"
               className="btn btn-danger "
               onClick={handleRegister}
+              style={{ marginLeft: "1rem" }}
             >
               Register
             </button>
           )}
         </div>
-
-        
       </div>
     </div>
   );

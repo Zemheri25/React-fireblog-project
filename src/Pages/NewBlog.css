@@ -1,0 +1,49 @@
+.blokim {
+  background-color: #046582;
+  width: 15rem;
+  border-radius: 100%;
+  height: 15rem;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.newblog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftnright {
+  border-top: 3px solid #046582;
+  width: 10rem;
+  margin: 1.5rem;
+}
+
+.blognew {
+  display: flex;
+
+  display: flex;
+  justify-content: center;
+}
+
+.h11 {
+  color: #046582;
+}
+
+.newinput {
+    width: 25rem;
+    height: 4rem;
+    margin: 1rem auto;
+}
+
+.newsubmit {
+    background-color: #046582;
+    border: none;
+    box-shadow: 1px 1px 1px  grey;
+    margin-top: 2rem;
+    width: 20rem;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    color: white;
+}

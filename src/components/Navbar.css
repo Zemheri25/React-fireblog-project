@@ -38,3 +38,11 @@
 .btn:hover {
     box-shadow: 1px 1px 5px white;
 }
+
+.dropdown {
+  border-radius: 10px;
+}
+
+.dropdown:hover {
+  box-shadow: 1px 1px 5px white;
+}
