@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #046582;
+  align-items: center;
+  height: 5rem;
+  box-shadow: 2px 2px 5px white;
+}
+
+.cwimage {
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 2rem;
+}
+
+.headingmiddle {
+  display: flex;
+}
+
+.leftandright {
+  border-top: 5px solid white;
+  width: 10rem;
+  margin-top: 1.3rem;
+  margin: 1.3rem 0.5rem;
+  border-radius: 5px;
+}
+
+.userrighttop {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+    box-shadow: 3px 3px 5px white;
+}
+
+.btn:hover {
+    box-shadow: 1px 1px 5px white;
+}
