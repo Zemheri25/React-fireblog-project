@@ -3,10 +3,11 @@ import "./NewBlog.css";
 import Blog from "../assets/blok.png";
 import { useState } from "react";
 import { useContext } from 'react';
-import {BlogContext} from "../contexts/BlogContexts"
+import {BlogContext} from "../contexts/BlogContexts";
+import { useNavigate } from "react-router-dom";
 
 const NewBlog = () => {
-  
+  const navigate = useNavigate();
   const{initialValues} = useContext(BlogContext);
   const {setInitialValues} = useContext(BlogContext);
   const {handleFormSubmit} = useContext(BlogContext);
@@ -14,10 +15,11 @@ const NewBlog = () => {
  const handleChange = (e) => {
    e.preventDefault();
    const {name, value} = e.target;
-   
    setInitialValues({...initialValues, [name] : value})
+   
  }
 
+ 
 
 
 

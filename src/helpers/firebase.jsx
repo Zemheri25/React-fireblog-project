@@ -3,9 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -71,6 +69,22 @@ export const userObserver = (setCurrentUser) => {
 };
 
 export const Additem = (initialValues) => {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const date1 = new Date();
+
   const database = getDatabase();
   const itemRef = ref(database, "baglanti2");
   const newİtem = push(itemRef);
@@ -78,6 +92,9 @@ export const Additem = (initialValues) => {
     title: initialValues.title,
     imgurl: initialValues.imgurl,
     content: initialValues.content,
+    date: `${
+      months[date1.getMonth()]
+    } ${new Date().getDate()} , ${new Date().getFullYear()}`,
   });
 };
 

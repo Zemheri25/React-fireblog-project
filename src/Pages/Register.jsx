@@ -4,6 +4,7 @@ import blok from "../assets/blok.png";
 import { useState } from "react";
 import {createUser} from "../helpers/firebase"
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -47,7 +48,9 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <input type="submit" className="loginbutton" value="Register" />
+        <Link style={{textAlign : "center"}} to={"/login"}>Do you have an account?</Link>
       </form>
+      
     </div>
   );
 };
