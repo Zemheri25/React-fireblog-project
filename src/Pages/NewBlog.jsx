@@ -1,30 +1,28 @@
 import React from "react";
 import "./NewBlog.css";
 import Blog from "../assets/blok.png";
-import { useState } from "react";
-import { useContext } from 'react';
-import {BlogContext} from "../contexts/BlogContexts";
+
+import { useContext } from "react";
+import { BlogContext } from "../contexts/BlogContexts";
 import { useNavigate } from "react-router-dom";
 
 const NewBlog = () => {
   const navigate = useNavigate();
-  const{initialValues} = useContext(BlogContext);
-  const {setInitialValues} = useContext(BlogContext);
-  const {handleFormSubmit} = useContext(BlogContext);
+  const { initialValues } = useContext(BlogContext);
+  const { setInitialValues } = useContext(BlogContext);
+  const { handleFormSubmit } = useContext(BlogContext);
 
- const handleChange = (e) => {
-   e.preventDefault();
-   const {name, value} = e.target;
-   setInitialValues({...initialValues, [name] : value})
-   
- }
-
- 
-
-
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setInitialValues({ ...initialValues, [name]: value });
+  };
 
   return (
-    <form className="newblog" onSubmit={(e) => handleFormSubmit(e)}>
+    <form
+      className="newblog"
+      onSubmit={(e, navigate) => handleFormSubmit(e, navigate("/"))}
+    >
       <img src={Blog} alt="" className="blokim" />
       <div className="blognew">
         <div className="leftnright"></div>
@@ -39,7 +37,7 @@ const NewBlog = () => {
         required
         className="newinput"
         onChange={handleChange}
-        value = {initialValues.title}
+        value={initialValues.title}
       />
       <input
         type="text"
@@ -48,7 +46,7 @@ const NewBlog = () => {
         required
         className="newinput"
         onChange={handleChange}
-        value = {initialValues.imgurl}
+        value={initialValues.imgurl}
       />
       <textarea
         name="content"
@@ -58,7 +56,7 @@ const NewBlog = () => {
         placeholder="Content*"
         style={{ marginTop: "1rem" }}
         onChange={handleChange}
-        value = {initialValues.content}
+        value={initialValues.content}
       />
       <input type="submit" value="SUBMIT" className="newsubmit" />
     </form>

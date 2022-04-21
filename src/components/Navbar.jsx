@@ -9,7 +9,6 @@ import { AuthContext } from "../contexts/AuthContext";
 import { Dropdown } from "react-bootstrap";
 import { DropdownButton } from "react-bootstrap";
 
-
 const Navbar = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
@@ -23,30 +22,35 @@ const Navbar = () => {
   };
 
   const handleNewBlog = () => {
-    navigate("/newblog")
-  }
+    navigate("/newblog");
+  };
 
   const handleProfile = () => {
-    navigate("/profile")
-  }
+    navigate("/profile");
+  };
 
-  const handleDashboard = () =>{
-    navigate("/")
-  }
+  const handleDashboard = () => {
+    navigate("/");
+  };
 
   return (
     <div className="navbar">
       <img src={cw} alt="cwlogo" className="cwimage" />
       <div className="headingmiddle">
-        <div className="leftandright" style={{marginLeft : "5rem"}}></div>
-        <h1 style={{ color: "white", cursor : "pointer"  }} onClick = {handleDashboard}>Zemheri25 BLOG</h1>
+        <div className="leftandright" style={{ marginLeft: "5rem" }}></div>
+        <h1
+          style={{ color: "white", cursor: "pointer" }}
+          onClick={handleDashboard}
+        >
+          Zemheri25 BLOG
+        </h1>
         <div className="leftandright"></div>
       </div>
 
       <div className="userrighttop">
         <div style={{ display: "flex" }}>
           {currentUser ? (
-            <h4 style={{ color: "white"}}>{currentUser.displayName}</h4>
+            <h4 style={{ color: "white" }}>{currentUser.displayName}</h4>
           ) : (
             <button
               type="button"
@@ -63,11 +67,13 @@ const Navbar = () => {
               title="Settings"
               variant="danger"
               className="dropdown"
-              style={{marginLeft : "1rem"}}
+              style={{ marginLeft: "1rem" }}
             >
               <Dropdown.Item onClick={handleProfile}>Profile</Dropdown.Item>
               <Dropdown.Item onClick={handleNewBlog}>New</Dropdown.Item>
-              <Dropdown.Item onClick={() => logOut()}>Log out</Dropdown.Item>
+              <Dropdown.Item onClick={() => logOut(navigate("/"))}>
+                Log out
+              </Dropdown.Item>
             </DropdownButton>
           )}
 

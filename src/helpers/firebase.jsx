@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { getDatabase, onValue, push, ref, set } from "firebase/database";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5EpUtnC9MiWejISwSvbJQWDJrQBGVSDw",
@@ -88,6 +89,7 @@ export const Additem = (initialValues) => {
   const database = getDatabase();
   const itemRef = ref(database, "baglanti2");
   const newİtem = push(itemRef);
+
   set(newİtem, {
     title: initialValues.title,
     imgurl: initialValues.imgurl,

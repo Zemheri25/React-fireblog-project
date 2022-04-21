@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import "./BlogCard.css";
-import {AuthContext} from "../contexts/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,8 +14,7 @@ const BlogCard = ({ item }) => {
   const { currentUser } = useContext(AuthContext);
   const handleNavigate = () => {
     if (currentUser) {
-      navigate("/details", {state : {item}});
-
+      navigate("/details", { state: { item } });
     } else {
       alert("Please sign in or register !");
       navigate("/register");
@@ -44,6 +43,7 @@ const BlogCard = ({ item }) => {
               {item.date}
             </Typography>
             <p style={{ fontSize: "13px" }}>{item.content.slice(0, 150)}...</p>
+            <p>{item.email}</p>
           </CardContent>
         </div>
       </CardActionArea>
