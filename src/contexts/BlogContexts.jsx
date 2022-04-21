@@ -7,21 +7,19 @@ export const BlogContext = createContext();
 
 const BlogContextProvider = ({ children }) => {
   const { currentUser } = useContext(AuthContext);
+  console.log(currentUser)
 
   const [initialValues, setInitialValues] = useState({
     title: "",
     imgurl: "",
     content: "",
     date: "",
-    email: "",
+    email : "",
   });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
-    if (currentUser) {
-      Additem(initialValues);
-    }
+    Additem(initialValues, currentUser);
   };
 
   return (

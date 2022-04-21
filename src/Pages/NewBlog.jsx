@@ -21,7 +21,7 @@ const NewBlog = () => {
   return (
     <form
       className="newblog"
-      onSubmit={(e, navigate) => handleFormSubmit(e, navigate("/"))}
+      onSubmit={(e) => handleFormSubmit(e, navigate("/"))}
     >
       <img src={Blog} alt="" className="blokim" />
       <div className="blognew">

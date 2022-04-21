@@ -28,3 +28,27 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.emaill {
+    text-align: start;
+    margin: 2rem;
+}
+
+.deleteandupdate {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    
+}
+
+.du {
+    border-radius: 10px;
+    font-size: 1.5rem;
+    border: none;
+    box-shadow: 3px 3px 5px grey;
+}
+
+.du:hover {
+    box-shadow: 1px 1px 5px grey;
+}

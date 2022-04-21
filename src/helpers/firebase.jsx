@@ -9,7 +9,8 @@ import {
 } from "firebase/auth";
 import { getDatabase, onValue, push, ref, set } from "firebase/database";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import {AuthContext} from "../contexts/AuthContext"
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5EpUtnC9MiWejISwSvbJQWDJrQBGVSDw",
@@ -69,7 +70,8 @@ export const userObserver = (setCurrentUser) => {
   });
 };
 
-export const Additem = (initialValues) => {
+export const Additem = (initialValues, currentUser) => {
+  
   const months = [
     "Jan",
     "Feb",
@@ -97,6 +99,7 @@ export const Additem = (initialValues) => {
     date: `${
       months[date1.getMonth()]
     } ${new Date().getDate()} , ${new Date().getFullYear()}`,
+    email : currentUser.email
   });
 };
 

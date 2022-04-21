@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BlogCard = ({ item }) => {
+  
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
   const handleNavigate = () => {
@@ -27,10 +28,10 @@ const BlogCard = ({ item }) => {
           component="img"
           height="140"
           image={item.imgurl}
-          alt="green iguana"
+          alt={item.title}
         />
-        <div className="cardcontent">
-          <CardContent>
+        <CardContent>
+          <div className="cardcontent">
             <Typography
               gutterBottom
               variant="h5"
@@ -43,9 +44,9 @@ const BlogCard = ({ item }) => {
               {item.date}
             </Typography>
             <p style={{ fontSize: "13px" }}>{item.content.slice(0, 150)}...</p>
-            <p>{item.email}</p>
-          </CardContent>
-        </div>
+          </div>
+          <p>{item.email}</p>
+        </CardContent>
       </CardActionArea>
     </Card>
   );

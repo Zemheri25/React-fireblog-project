@@ -12,6 +12,7 @@ import { DropdownButton } from "react-bootstrap";
 const Navbar = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
+  
 
   const handleLogin = () => {
     navigate("/login");
@@ -32,14 +33,14 @@ const Navbar = () => {
   const handleDashboard = () => {
     navigate("/");
   };
-
+ 
   return (
     <div className="navbar">
       <img src={cw} alt="cwlogo" className="cwimage" />
       <div className="headingmiddle">
         <div className="leftandright" style={{ marginLeft: "5rem" }}></div>
         <h1
-          style={{ color: "white", cursor: "pointer" }}
+          style={{ color: "white", cursor: "pointer", fontFamily : "Girassol" }}
           onClick={handleDashboard}
         >
           Zemheri25 BLOG
