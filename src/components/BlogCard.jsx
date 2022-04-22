@@ -8,6 +8,7 @@ import "./BlogCard.css";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const BlogCard = ({ item }) => {
   
@@ -22,7 +23,7 @@ const BlogCard = ({ item }) => {
     }
   };
   return (
-    <Card sx={{ maxWidth: 345 }} onClick={handleNavigate}>
+    <Card sx={{ maxWidth: 250 }} onClick={handleNavigate} >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -45,7 +46,10 @@ const BlogCard = ({ item }) => {
             </Typography>
             <p style={{ fontSize: "13px" }}>{item.content.slice(0, 150)}...</p>
           </div>
-          <p>{item.email}</p>
+          <div className="person">
+          <AccountCircleIcon />
+          <p style={{fontWeight : "800", marginTop : "1rem"}}>{item.email}</p>
+          </div>
         </CardContent>
       </CardActionArea>
     </Card>

@@ -1,0 +1,10 @@
+.profilee {
+    box-shadow: 3px 3px 5px grey;
+    max-width: 50rem;
+    margin: 10rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 20rem;
+}

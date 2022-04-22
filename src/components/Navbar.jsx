@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { logOut } from "../helpers/firebase";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Dropdown } from "react-bootstrap";
 import { DropdownButton } from "react-bootstrap";
 
@@ -51,7 +51,10 @@ const Navbar = () => {
       <div className="userrighttop">
         <div style={{ display: "flex" }}>
           {currentUser ? (
-            <h4 style={{ color: "white" }}>{currentUser.displayName}</h4>
+            <div className="person">
+              < AccountCircleIcon style={{color : "white"}}/>
+              <h4 style={{ color: "white" }}>{currentUser.displayName}</h4>
+            </div>
           ) : (
             <button
               type="button"

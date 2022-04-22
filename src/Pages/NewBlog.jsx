@@ -14,8 +14,9 @@ const NewBlog = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    const { name, value } = e.target;
-    setInitialValues({ ...initialValues, [name]: value });
+    
+    setInitialValues({ ...initialValues, [e.target.name]: e.target.value });
+
   };
 
   return (

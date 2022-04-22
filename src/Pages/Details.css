@@ -32,6 +32,7 @@
 .emaill {
     text-align: start;
     margin: 2rem;
+    font-weight: 800;
 }
 
 .deleteandupdate {
@@ -47,8 +48,16 @@
     font-size: 1.5rem;
     border: none;
     box-shadow: 3px 3px 5px grey;
+    padding: 10px;
 }
 
 .du:hover {
     box-shadow: 1px 1px 5px grey;
+}
+
+.person {
+   
+    align-items: center;
+    display: flex;
+    
 }

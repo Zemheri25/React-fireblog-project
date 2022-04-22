@@ -7,10 +7,8 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { getDatabase, onValue, push, ref, set } from "firebase/database";
+import { getDatabase, onValue, push, ref, remove, set, update } from "firebase/database";
 import { useEffect, useState } from "react";
-import { useContext } from "react";
-import {AuthContext} from "../contexts/AuthContext"
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5EpUtnC9MiWejISwSvbJQWDJrQBGVSDw",
@@ -93,6 +91,7 @@ export const Additem = (initialValues, currentUser) => {
   const newİtem = push(itemRef);
 
   set(newİtem, {
+    
     title: initialValues.title,
     imgurl: initialValues.imgurl,
     content: initialValues.content,
@@ -123,3 +122,17 @@ export const useFetch = () => {
 
   return { items };
 };
+
+
+export const DeleteItem = (id) => {
+  const database = getDatabase();
+ 
+  remove(ref(database, "baglanti2/" + id))
+}
+
+export const editItem1 = (initialValues) => {
+  const database = getDatabase();
+  const updates = {};
+  updates["baglanti2/"+initialValues.id] = initialValues;
+  return update(ref(database), updates)
+}
