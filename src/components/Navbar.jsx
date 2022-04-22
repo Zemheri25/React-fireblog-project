@@ -43,7 +43,7 @@ const Navbar = () => {
           style={{ color: "white", cursor: "pointer", fontFamily : "Girassol" }}
           onClick={handleDashboard}
         >
-          Zemheri25 BLOG
+          -Zemheri25 BLOG-
         </h1>
         <div className="leftandright"></div>
       </div>
