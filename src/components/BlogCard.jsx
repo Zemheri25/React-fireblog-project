@@ -9,6 +9,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {Toastify2} from "./Toastify"
 
 const BlogCard = ({ item }) => {
   
@@ -18,7 +19,7 @@ const BlogCard = ({ item }) => {
     if (currentUser) {
       navigate("/details", { state: { item } });
     } else {
-      alert("Please sign in or register !");
+      Toastify2("Please sign in or log in")
       navigate("/register");
     }
   };

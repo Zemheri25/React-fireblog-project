@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { getDatabase, onValue, push, ref, remove, set, update } from "firebase/database";
 import { useEffect, useState } from "react";
+import Toastify from "../components/Toastify";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5EpUtnC9MiWejISwSvbJQWDJrQBGVSDw",
@@ -37,9 +38,10 @@ export const createUser = async (email, password, displayName, navigate) => {
       displayName: displayName,
     });
     navigate("/");
-    console.log(userCredential);
+    
+    Toastify("The user has created")
   } catch (error) {
-    alert(error.message);
+    Toastify(error.message)
   }
 };
 
@@ -48,14 +50,16 @@ export const loginUser = async (email, password, navigate) => {
     let user = await signInWithEmailAndPassword(auth, email, password);
     navigate("/");
     console.log(user);
+    Toastify("The user has loged in")
   } catch (error) {
-    alert(error.message);
+    Toastify(error.message)
   }
 };
 
 export const logOut = () => {
   signOut(auth);
-  alert("User log out");
+  
+  Toastify("The user has loged out")
 };
 
 export const userObserver = (setCurrentUser) => {
@@ -100,6 +104,7 @@ export const Additem = (initialValues, currentUser) => {
     } ${new Date().getDate()} , ${new Date().getFullYear()}`,
     email : currentUser.email
   });
+  Toastify("The item has added")
 };
 
 export const useFetch = () => {
@@ -126,13 +131,15 @@ export const useFetch = () => {
 
 export const DeleteItem = (id) => {
   const database = getDatabase();
- 
   remove(ref(database, "baglanti2/" + id))
+  Toastify("The item has deleted")
 }
 
 export const editItem1 = (initialValues) => {
   const database = getDatabase();
   const updates = {};
   updates["baglanti2/"+initialValues.id] = initialValues;
+  Toastify("The item has updated")
   return update(ref(database), updates)
+  
 }

@@ -37,6 +37,12 @@ const BlogContextProvider = ({ children }) => {
   const handleEdit = (id, title, imgurl, content, email, date) => {
     setInitialValues({id, title, imgurl, content, email, date})
   }
+
+ 
+  
+
+  
+  
   
 
   return (
@@ -49,3 +55,4 @@ const BlogContextProvider = ({ children }) => {
 };
 
 export default BlogContextProvider;
+
