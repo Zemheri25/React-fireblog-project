@@ -53,8 +53,8 @@ const Details = () => {
         deleteAndUpdate && <div className='deleteandupdate'>
             <button style={{backgroundColor : "#C51162", color : "white"}} className='du' onClick={() => handleEdit(
               item.id,
-              item.imgurl,
               item.title,
+              item.imgurl,
               item.content,
               item.email,
               item.date,
